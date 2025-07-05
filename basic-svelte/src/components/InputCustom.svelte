@@ -1,8 +1,8 @@
 <script>
-    export let control;
+    export let control = "textarea";
     export let value;
     export let placeHolder;
-    export let type;
+    export let type = "text";
     export let name;
     export let id;
 </script>

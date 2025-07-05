@@ -1,9 +1,10 @@
 <script>
-    import Card from "../../components/Card.svelte";
-  import CardGrid from "../../components/CardGrid.svelte";
+    import CardGrid from "../../components/CardGrid.svelte";
     import Header from "../../components/Header.svelte";
-  import InputCustom from "../../components/InputCustom.svelte";
+    import InputCustom from "../../components/InputCustom.svelte";
+    import Jumbootton from "../../components/Jumbootton.svelte";
     const color = "primary";
+    let showVar = false;
 
     let posts = [
         { 
@@ -42,6 +43,23 @@
 
 <Header color={ color } title="Components" />
 <div class="container">
+
+    Show Jumbotron: <input type="checkbox" bind:checked={ showVar }>
+    {#if showVar }
+        <Jumbootton name="My components" let:show={ show }>
+            <h2 slot="subtitle">Svelte course</h2>
+            <span slot="description">New svelte course</span>
+            <div class:show>
+                {#if show}
+                    <hr>
+                    <button class="btn btn-danger">Button</button>
+                {:else}
+                    <h2>hover here</h2>
+                {/if}
+            </div>
+        </Jumbootton>
+    {/if}
+
     <CardGrid posts={ posts } />
 
     <form on:submit|preventDefault={addPost}>
