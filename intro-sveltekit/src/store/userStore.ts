@@ -8,15 +8,13 @@ const fetchUsers = async () => {
         }
     });
     const json = await res.json();
-    console.log( json )
-    const loadUsers = json.data.map(( user: any ) => {
+    json.data.map(( user: any ) => {
         return {
             name: user.first_name,
             id: user.id,
             avatar: user.avatar,
         }
     });
-    users.set(loadUsers);
 }
 
 fetchUsers();
